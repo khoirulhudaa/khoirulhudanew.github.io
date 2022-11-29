@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <title>Tugas PHP</title>
+        <style>
+            * {
+                background-color: white;
+            }
+    
+            p {
+                text-align: center;
+                font-size: 60px;
+                font-weight: bold;
+                color: black
+            }
+
+            table {
+                width: 80vw
+            }
+    
+            pre {
+                text-align: center;
+            }
+            tr,th,td {
+                border: 1px solid black;
+                text-align: center;
+                padding-bottom: 30px;
+                text-align: center;
+                color: white;
+                cursor: pointer;
+                background-color: black ;
+            }
+            td:hover {
+                background-color: white;
+                color: black;
+            }
+            td:active {
+                transform: scale(0.98);
+            }
+            table {
+                width: 100%;
+            }
+        </style>
+    </head>
+    
+    <body>
+            <table id="tabelku" style="width: 80vw;margin-left: auto;margin-right: auto;margin-top: 120px;">
+                <tr>
+                    <th>Nama</th>
+                    <th>Alamat</th>
+                    <th>Aksi</th>
+                </tr>
+                <tr class="baris" id="baris__1">
+                    <td class="cell" id="nama__1">Alfreds Futterkiste</td>
+                    <td class="cell" id="alamat_1">Maria Anders</td>
+                    <td class="cell" id="hapus__1">hapus</td>
+                </tr>
+                <tr class="baris" id="baris__2">
+                    <td class="cell" id="nama__2">Centro comercial Moctezuma</td>
+                    <td class="cell" id="alamat_id">Francisco Chang</td>
+                    <td class="cell" id="hapus__2">hapus</td>
+                </tr>
+            </table>
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+       <script src="./jquery.js"></script>
+       <script>
+           $(document).ready(function() {
+                $('.cell').click(function() {
+                    let isi = $(this).text();
+                    let tid = $(this).prop('id');
+                    alert(`${tid}`)
+                    let rid = tid.split('__');
+                    let id_baris = rid[1];
+                    let nama_mhs = $('#nama__' + id_baris).text();
+
+                    if(isi == 'hapus') {
+                        let yakin = confirm(`Yakin mau menghapus data atas nama ${nama_mhs} ?`)
+                        if(!yakin) return ;
+                        $('#baris__' + id_baris).fadeOut();
+                    }else {
+                        alert('Aksi lain untuk cell ini belum ada. Terma kasih sudah mencoba')
+                    }
+                })
+            })
+            </script>
+            <script src="./jquery.js"></script>
+    </body>
+</html>
